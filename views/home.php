@@ -1,4 +1,7 @@
-<?php 
-    echo "Site: ".$mvc['nome']."<br>";
-    echo "Modelo: ".$mvc['modelo'];
-?>
+<div class="container">    
+    <div class="row">
+        <div class="col-md-12">
+            Home Front.
+        </div>
+    </div>
+</div>
