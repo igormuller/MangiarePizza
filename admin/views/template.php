@@ -59,6 +59,12 @@
                         <li>
                             <a href="<?php echo BASE_URL; ?>/pizza"><i class="fa fa-fw fa-cubes"></i> Pizzas</a>
                         </li>
+                        <li>
+                            <a href="<?php echo BASE_URL; ?>/pedido"><i class="fa fa-fw fa-shopping-cart"></i> Pedidos</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo BASE_URL; ?>/pessoa"><i class="fa fa-fw fa-users"></i> Pessoas</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -73,6 +79,9 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js"></script>
+        
+        <script src="<?php echo BASE_URL; ?>/assets/js/script.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/jquery.mask.js"></script>
 
     </body>
 

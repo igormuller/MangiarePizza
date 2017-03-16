@@ -2,7 +2,7 @@
 
 class Pizza extends model {
     
-    private $id_pizza, $id_massa;
+    private $id_pizza;
     private $nome, $imagem;
     private $preco_custo, $preco_venda;
     private $ingredientes;
@@ -14,17 +14,43 @@ class Pizza extends model {
                 . "ingredientes = :ingredientes, "
                 . "preco_custo = :preco_custo, "
                 . "preco_venda = :preco_venda, "
-                . "imagem = :imagem, "
-                . "id_massa = :id_massa");
+                . "imagem = :imagem");
         $sql->bindValue(":nome", $this->getNome());
         $sql->bindValue(":ingredientes", $this->getIngredientes());
         $sql->bindValue(":preco_custo", $this->getPreco_custo());
         $sql->bindValue(":preco_venda", $this->getPreco_venda());
         $sql->bindValue(":imagem", $this->getImagem());
-        $sql->bindValue(":id_massa", $this->getId_massa());
         $sql->execute();
     }
     
+    public function update() {
+        $comando = "UPDATE pizza SET "
+                    . "nome = :nome, "
+                    . "ingredientes = :ingredientes, "
+                    . "preco_custo = :preco_custo, "
+                    . "preco_venda = :preco_venda, ";
+        if (!empty($this->getImagem())) {
+            $comando .= "imagem = :imagem ";
+        }
+        $comando .= "WHERE "
+                    . "id_pizza = :id_pizza";        
+        $sql = $this->db->prepare($comando);
+        $sql->bindValue(":nome", $this->getNome());
+        $sql->bindValue(":ingredientes", $this->getIngredientes());
+        $sql->bindValue(":preco_custo", $this->getPreco_custo());
+        $sql->bindValue(":preco_venda", $this->getPreco_venda());
+        $sql->bindValue(":imagem", $this->getImagem());
+        $sql->bindValue(":id_pizza", $this->getId_pizza());
+        $sql->execute();
+    }
+    
+    public function remove($id_pizza) {
+        $sql = $this->db->prepare("DELETE FROM pizza WHERE id_pizza = :id_pizza");
+        $sql->bindValue(":id_pizza", $id_pizza);
+        $sql->execute();
+    }
+
+
     public function getPizzas() {
         $sql = $this->db->prepare("SELECT * FROM pizza");
         $sql->execute();
@@ -35,6 +61,18 @@ class Pizza extends model {
         }
         return $array;
     }
+    
+    public function getPizza($id_pizza) {
+        $sql = $this->db->prepare("SELECT * FROM pizza WHERE id_pizza = :id_pizza");
+        $sql->bindValue(":id_pizza", $id_pizza);
+        $sql->execute();
+        
+        $array = array();
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetch();
+        }
+        return $array;
+    }
 
 
     /*
@@ -42,10 +80,6 @@ class Pizza extends model {
      */
     function getId_pizza() {
         return $this->id_pizza;
-    }
-
-    function getId_massa() {
-        return $this->id_massa;
     }
 
     function getNome() {
@@ -70,10 +104,6 @@ class Pizza extends model {
 
     function setId_pizza($id_pizza) {
         $this->id_pizza = $id_pizza;
-    }
-
-    function setId_massa($id_massa) {
-        $this->id_massa = $id_massa;
     }
 
     function setNome($nome) {

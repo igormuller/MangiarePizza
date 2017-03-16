@@ -11,6 +11,7 @@ class usuarioController extends controller {
     
     public function index($id_usuario = '') {
         $dados = array(
+            'info' => '',
             'usuario' => array()
         );
         
@@ -18,8 +19,17 @@ class usuarioController extends controller {
             
             if ($id_usuario === $_SESSION['uLogado']) {
                 $usuario = new Usuario();
-                $dados['usuario'] = $usuario->getUsuario($id_usuario);
                 
+                if (isset($_POST['nome']) && !empty($_POST['nome'])) {
+                    $usuario->setId_usuario($id_usuario);
+                    $usuario->setNome(addslashes($_POST['nome']));
+                    if (isset($_POST['senha']) && !empty($_POST['senha'])) {
+                        $usuario->setSenha(md5($_POST['senha']));
+                    }
+                    $usuario->update();
+                }
+                $dados['usuario'] = $usuario->getUsuario($id_usuario);
+                $dados['info'] = "Usuário editado com sucesso!";
                 $this->loadTemplate('usuarioEdit', $dados);
             } else {
                 header("Location: ".BASE_URL);

@@ -15,27 +15,39 @@
                 </ol>
             </div>
         </div>
+        <?php if (!empty($info)): ?>
         <div class="row">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Dados do Usuário</div>
-                <div class="panel-body">
-                    <form method="POST">
-                        <div class="form-group">
-                            <label>Nome</label>
-                            <input type="text" class="form-control" name="nome" value="<?php echo $usuario['nome']; ?>" />
-                        </div>
-                        <div class="form-group">
-                            <label>Login:</label>
-                            <input type="text" class="form-control" name="login" value="<?php echo $usuario['login']; ?>" />
-                        </div>
-                        <div class="form-group">
-                            <label>Senha:</label>
-                            <input type="password" class="form-control" name="senha" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Salvar" />
-                        </div>
-                    </form>
+            <div class="col-md-12">
+                <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Atneção!</strong> <?php echo $info; ?>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Dados do Usuário</div>
+                    <div class="panel-body">
+                        <form method="POST">
+                            <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" class="form-control" name="nome" value="<?php echo $usuario['nome']; ?>" />
+                            </div>
+                            <div class="form-group">
+                                <label>Login:</label>
+                                <input type="text" class="form-control" value="<?php echo $usuario['login']; ?>" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label>Senha:</label>
+                                <input type="password" class="form-control" name="senha" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" value="Salvar" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

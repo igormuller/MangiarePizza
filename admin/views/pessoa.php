@@ -3,21 +3,21 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Pizzas
+                    Pessoas
                 </h1>
                 <ol class="breadcrumb">
                     <li>
                         <i class="fa fa-home"></i>  <a href="<?php echo BASE_URL; ?>">Home</a>
                     </li>
                     <li class="active">
-                        <i class="fa fa-cubes"></i>  Pizzas
+                        <i class="fa fa-users"></i>  Pessoas
                     </li>
                 </ol>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a href="<?php echo BASE_URL; ?>/pizza/add" class="btn btn-success">Nova pizza</a>
+                <a href="<?php echo BASE_URL; ?>/pessoa/add" class="btn btn-success">Nova pessoa</a>
             </div>            
         </div>
         <br/>
@@ -28,23 +28,23 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Imagem</th>
-                                    <th>Pizza</th>
-                                    <th>Preço Custo</th>
-                                    <th>Preço Venda</th>
+                                    <th>Nome</th>
+                                    <th>Endereço</th>
+                                    <th>Telefone</th>
+                                    <th>E-mail</th>
                                     <th>Ação</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($pizzas as $pizza): ?>
+                                <?php foreach ($pessoas as $pessoa): ?>
                                 <tr>
-                                    <td><img src="<?php echo BASE_URL; ?>/assets/images/pizzas/<?php echo $pizza['imagem']; ?>" width="60"></td>
-                                    <td><?php echo $pizza['nome']; ?></td>
-                                    <td><?php echo "R$ ".number_format($pizza['preco_custo'],2,',','.'); ?></td>
-                                    <td><?php echo "R$ ".number_format($pizza['preco_venda'],2,',','.'); ?></td>
+                                    <td><?php echo $pessoa['nome']; ?></td>
+                                    <td><?php echo substr($pessoa['endereco'],0,40)." ..."; ?></td>
+                                    <td><?php echo $pessoa['telefone']; ?></td>
+                                    <td><?php echo $pessoa['email']; ?></td>
                                     <td>
-                                        <a href="<?php echo BASE_URL; ?>/pizza/edit/<?php echo $pizza['id_pizza']; ?>" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></a>
-                                        <a href="<?php echo BASE_URL; ?>/pizza/remove/<?php echo $pizza['id_pizza']; ?>" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                        <a href="<?php echo BASE_URL; ?>/pessoa/edit/<?php echo $pessoa['id_pessoa']; ?>" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="<?php echo BASE_URL; ?>/pessoa/remove/<?php echo $pessoa['id_pessoa']; ?>" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
