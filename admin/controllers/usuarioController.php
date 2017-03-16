@@ -27,9 +27,9 @@ class usuarioController extends controller {
                         $usuario->setSenha(md5($_POST['senha']));
                     }
                     $usuario->update();
+                    $dados['info'] = "Usuário editado com sucesso!";
                 }
                 $dados['usuario'] = $usuario->getUsuario($id_usuario);
-                $dados['info'] = "Usuário editado com sucesso!";
                 $this->loadTemplate('usuarioEdit', $dados);
             } else {
                 header("Location: ".BASE_URL);

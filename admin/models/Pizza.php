@@ -39,7 +39,9 @@ class Pizza extends model {
         $sql->bindValue(":ingredientes", $this->getIngredientes());
         $sql->bindValue(":preco_custo", $this->getPreco_custo());
         $sql->bindValue(":preco_venda", $this->getPreco_venda());
-        $sql->bindValue(":imagem", $this->getImagem());
+        if (!empty($this->getImagem())) {
+            $sql->bindValue(":imagem", $this->getImagem());
+        }        
         $sql->bindValue(":id_pizza", $this->getId_pizza());
         $sql->execute();
     }
