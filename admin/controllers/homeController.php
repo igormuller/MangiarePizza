@@ -11,11 +11,14 @@ class homeController extends controller {
     
     public function index() {
         $dados = array(
-            'pizzas' => 0
+            'pizzas' => 0,
+            'pessoas' => 0
         );
         
         $pizzas = new Pizza();
         $dados['pizzas'] = count($pizzas->getPizzas());
+        $pessoa = new Pessoa();
+        $dados['pessoas'] = count($pessoa->getPessoas());
         $this->loadTemplate('home', $dados);
     }
     

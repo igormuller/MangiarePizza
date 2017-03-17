@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Adicionar Pessoa
+                    Editar Pessoa
                 </h1>
                 <ol class="breadcrumb">
                     <li>
@@ -13,34 +13,44 @@
                         <i class="fa fa-users"></i>  <a href="<?php echo BASE_URL; ?>/pessoa">Pessoas</a>
                     </li>
                     <li class="active">
-                        <i class="fa fa-user"></i>  Adicionar
+                        <i class="fa fa-user"></i>  Editar
                     </li>
                 </ol>
             </div>
         </div>
+        <?php if (!empty($info)): ?>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Atneção!</strong> <?php echo $info; ?>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
-                    <div class="panel-heading"><strong>Adicionar Pessoa</strong></div>
+                    <div class="panel-heading"><strong>Editar Pessoa</strong></div>
                     <div class="panel-body">
                         <form method="POST">
                             <div class="form-group">
                                 <label>Nome:</label>
-                                <input type="text" class="form-control" name="nome" required="" />
+                                <input type="text" class="form-control" name="nome" value="<?php echo $pessoa['nome']; ?>" required="" />
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <label>Endereco:</label>
-                                        <input type="text" class="form-control" name="endereco" required="" />
+                                        <input type="text" class="form-control" name="endereco" value="<?php echo $endereco[0]; ?>" required="" />
                                     </div>
                                     <div class="col-md-2">
                                         <label>Número:</label>
-                                        <input type="text" class="form-control" name="numero" required="" />
+                                        <input type="text" class="form-control" name="numero" value="<?php echo $endereco[1]; ?>" required="" />
                                     </div>
                                     <div class="col-md-2">
                                         <label>Complemento:</label>
-                                        <input type="text" class="form-control" name="complemento" />
+                                        <input type="text" class="form-control" name="complemento" value="<?php echo $endereco[2]; ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -48,11 +58,11 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Bairro:</label>
-                                        <input type="text" class="form-control" name="bairro" required="" />
+                                        <input type="text" class="form-control" name="bairro" value="<?php echo $endereco[3]; ?>" required="" />
                                     </div>
                                     <div class="col-md-6">
                                         <label>Cidade:</label>
-                                        <input type="text" class="form-control" name="cidade" required="" />
+                                        <input type="text" class="form-control" name="cidade" value="<?php echo $endereco[4]; ?>" required="" />
                                     </div>
                                 </div>
                             </div>
@@ -60,15 +70,15 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label>Telefone:</label>
-                                        <input type="text" class="form-control telefone" name="telefone" required="" />
+                                        <input type="text" class="form-control telefone" name="telefone" value="<?php echo $pessoa['telefone']; ?>" required="" />
                                     </div>
                                     <div class="col-md-4">
                                         <label>E-mail:</label>
-                                        <input type="email" class="form-control" name="email" required="" />
+                                        <input type="email" class="form-control" name="email" value="<?php echo $pessoa['email']; ?>" required="" />
                                     </div>
                                     <div class="col-md-4">
                                         <label>Senha:</label>
-                                        <input type="password" class="form-control" name="senha" required="" />
+                                        <input type="password" class="form-control" name="senha" />
                                     </div>
                                 </div>
                             </div>
