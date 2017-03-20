@@ -2,7 +2,23 @@
 
 class Pedido extends model {
     
-    private $data_pedido, $valor_final, $observacao, $id_status, $id_pessoa;
+    private $data_pedido, $valor_final, $observacao, $id_status_pedido, $id_pessoa, $id_pedido;
+    
+    public function add() {
+        $comando = "INSERT INTO pedido SET dt_pedido = NOW(), ";
+        if (!empty($this->getObservacao())) {
+            $comando .= "observacao = :observacao, ";
+        }
+        $comando .= "id_pessoa = :id_pessoa, id_status_pedido = :id_status_pedido";
+        $sql = $this->db->prepare($comando);
+        $sql->bindValue(":id_pessoa", $this->getId_pessoa());
+        $sql->bindValue(":id_status_pedido", $this->getId_status_pedido());
+        if (!empty($this->getObservacao())) {
+            $sql->bindValue(":observacao", $this->getObservacao());
+        }
+        $sql->execute();
+        return $this->db->lastInsertId();
+    }
     
     public function getPedidos() {
         $sql = $this->db->prepare(""
@@ -37,11 +53,53 @@ class Pedido extends model {
         }
         return $array;
     }
+    
+    public function getPedidoStatus($id_status_pedido) {
+        $sql = $this->db->prepare("SELECT * FROM pedido WHERE id_status_pedido = :id_status_pedido");
+        $sql->bindValue(":id_status_pedido", $id_status_pedido);
+        $sql->execute();
+        
+        $array = array();
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+        return $array;
+    }
+    
+    public function update() {
+        $comando = "UPDATE pedido SET ";
+        if (!empty($this->getObservacao())) {
+            $comando .= "observacao = :observacao, ";
+        }
+        $comando .= "id_pessoa = :id_pessoa, id_status_pedido = :id_status_pedido WHERE id_pedido = :id_pedido";
+        $sql = $this->db->prepare($comando);
+        $sql->bindValue(":id_pessoa", $this->getId_pessoa());
+        $sql->bindValue(":id_status_pedido", $this->getId_status_pedido());
+        $sql->bindValue(":id_pedido", $this->getId_pedido());
+        if (!empty($this->getObservacao())) {
+            $sql->bindValue(":observacao", $this->getObservacao());
+        }
+        $sql->execute();
+    }
+    
+    public function remove($id_pedido) {
+        $sql = $this->db->prepare("DELETE FROM pedido WHERE id_pedido = :id_pedido");
+        $sql->bindValue(":id_pedido", $id_pedido);
+        $sql->execute();
+    }
 
     /*
      * Getters and Setters
      */
-    function getData_pedido() {
+    function getId_pedido() {
+        return $this->id_pedido;
+    }
+
+    function setId_pedido($id_pedido) {
+        $this->id_pedido = $id_pedido;
+    }
+
+        function getData_pedido() {
         return $this->data_pedido;
     }
 
@@ -53,8 +111,8 @@ class Pedido extends model {
         return $this->observacao;
     }
 
-    function getId_status() {
-        return $this->id_status;
+    function getId_status_pedido() {
+        return $this->id_status_pedido;
     }
 
     function getId_pessoa() {
@@ -73,8 +131,8 @@ class Pedido extends model {
         $this->observacao = $observacao;
     }
 
-    function setId_status($id_status) {
-        $this->id_status = $id_status;
+    function setId_status_pedido($id_status_pedido) {
+        $this->id_status_pedido = $id_status_pedido;
     }
 
     function setId_pessoa($id_pessoa) {

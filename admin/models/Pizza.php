@@ -52,7 +52,6 @@ class Pizza extends model {
         $sql->execute();
     }
 
-
     public function getPizzas() {
         $sql = $this->db->prepare("SELECT * FROM pizza");
         $sql->execute();

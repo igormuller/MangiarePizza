@@ -44,12 +44,12 @@
                                 <i class="fa fa-tasks fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">12</div>
-                                <div>Novos Pedidos!</div>
+                                <div class="huge"><?php echo $pedido_novo; ?></div>
+                                <div>Pedidos Novos!</div>
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="<?php echo BASE_URL; ?>/pedido">
                         <div class="panel-footer">
                             <span class="pull-left">Ver Detalhes</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -66,12 +66,12 @@
                                 <i class="fa fa-shopping-cart fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">124</div>
+                                <div class="huge"><?php echo $pedido_entrega; ?></div>
                                 <div>Pedidos p/ Entrega!</div>
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="<?php echo BASE_URL; ?>/pedido">
                         <div class="panel-footer">
                             <span class="pull-left">Ver Detalhes</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -55,17 +55,20 @@ class pizzaController extends controller {
             'pizza' => array()
         );
         
+        //Verifica se foi setado a informação $id_pizza na URL.
         if (isset($id_pizza) && !empty($id_pizza)) {
             $pizza = new Pizza();
             $array = $pizza->getPizza($id_pizza);
             
+            //Verifica se foi setado o nome no formulário
             if (isset($_POST['nome']) && !empty($_POST['nome'])) {
                 $pizza->setId_pizza($id_pizza);
                 $pizza->setNome(addslashes($_POST['nome']));
                 $pizza->setPreco_custo(str_replace(',','.',addslashes($_POST['preco_custo'])));
                 $pizza->setPreco_venda(str_replace(',','.',addslashes($_POST['preco_venda'])));
                 $pizza->setIngredientes(addslashes($_POST['ingredientes']));
-
+                
+                //verifica se foi informado imagem no formulário
                 if (isset($_FILES['imagem']) && !empty($_FILES['imagem']['tmp_name'])) {
 
                     $permitidos = array('image/jpeg','image/jpg','image/png');
@@ -73,7 +76,11 @@ class pizzaController extends controller {
                     if(in_array($_FILES['imagem']['type'], $permitidos)){
 
                         $nome = md5(time().rand(0, 999)).'.png';
-                        unlink("assets/images/pizzas/".$array['imagem']);
+                        
+                        //Verifica sejá existia uma imagem, para permitir apagar a imagem no servidor.
+                        if (!empty($pizza->getImagem())) {
+                            unlink("assets/images/pizzas/".$array['imagem']);
+                        }
                         move_uploaded_file($_FILES['imagem']['tmp_name'], 'assets/images/pizzas/'.$nome);
                         $pizza->setImagem($nome);
 
@@ -91,10 +98,13 @@ class pizzaController extends controller {
         $this->loadTemplate('pizzaEdit', $dados);
     }
     
+    
     public function remove($id_pizza) {
+        
         if (isset($id_pizza) && !empty($id_pizza)) {
             $pizza = new Pizza();
             $array = $pizza->getPizza($id_pizza);
+            
             if (!empty($array['imagem'])) {
                 unlink("assets/images/pizzas/".$array['imagem']);
             }

@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Status:</label>
-                                        <select class="form-control" name="id_pessoa">
+                                        <select class="form-control" name="id_status_pedido">
                                             <?php foreach ($status_pedido as $sp): ?>
                                             <option value="<?php echo $sp['id_status_pedido']; ?>"><?php echo $sp['nome']; ?></option>
                                             <?php endforeach; ?>
@@ -48,6 +48,7 @@
                                 <label>Observação:</label>
                                 <textarea class="form-control" name="observacao" rows="3"></textarea>
                             </div>
+                            <input type="submit" class="btn btn-success" value="Salvar" />
                         </form>
                     </div>
                 </div>
