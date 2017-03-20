@@ -44,6 +44,14 @@
                                             <input type="text" class="form-control" name="preco_venda" required=""/>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <label>Massa:</label>
+                                        <select class="form-control" name="id_massa">
+                                            <?php foreach ($massas as $massa): ?> 
+                                            <option value="<?php echo $massa['id_massa']; ?>"><?php echo $massa['nome']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">

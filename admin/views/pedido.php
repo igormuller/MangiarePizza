@@ -10,7 +10,7 @@
                         <i class="fa fa-home"></i>  <a href="<?php echo BASE_URL; ?>">Home</a>
                     </li>
                     <li class="active">
-                        <i class="fa fa-shopping-cart"></i>  Pedido
+                        <i class="fa fa-shopping-cart"></i>  Pedidos
                     </li>
                 </ol>
             </div>
@@ -42,7 +42,7 @@
                                 <tr>
                                     <td><?php echo $pedido['id_pedido']; ?></td>
                                     <td><?php echo date('d/m/Y - H:i:s',strtotime($pedido['dt_pedido'])); ?></td>
-                                    <td><?php echo $pedido['valor_final']; ?></td>
+                                    <td><?php echo "R$ ".number_format($pedido['valor_final'],2,',','.'); ?></td>
                                     <td><?php echo $pedido['total_pizza']; ?></td>
                                     <td><?php echo $pedido['status_pedido']; ?></td>
                                     <td><?php echo $pedido['pessoa']; ?></td>

@@ -5,7 +5,7 @@ class Pedido extends model {
     private $data_pedido, $valor_final, $observacao, $id_status_pedido, $id_pessoa, $id_pedido;
     
     public function add() {
-        $comando = "INSERT INTO pedido SET dt_pedido = NOW(), ";
+        $comando = "INSERT INTO pedido SET dt_pedido = NOW(), valor_final = 0, ";
         if (!empty($this->getObservacao())) {
             $comando .= "observacao = :observacao, ";
         }
@@ -20,6 +20,14 @@ class Pedido extends model {
         return $this->db->lastInsertId();
     }
     
+    public function atualizaValor($id_pedido, $valor_final) {
+        $sql = $this->db->prepare("UPDATE pedido SET valor_final = :valor_final WHERE id_pedido = :id_pedido");
+        $sql->bindValue(":id_pedido", $id_pedido);
+        $sql->bindValue(":valor_final", $valor_final);
+        $sql->execute();
+    }
+
+
     public function getPedidos() {
         $sql = $this->db->prepare(""
                 . "SELECT "

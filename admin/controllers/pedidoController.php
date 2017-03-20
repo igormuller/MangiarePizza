@@ -53,12 +53,14 @@ class pedidoController extends controller {
             'pessoas' => array(),
             'status_pedido' => array(),
             'pedido' => array(),
-            'pizza_pedido' => array()
+            'pizza_pedido' => array(),
+            'pizzas' => array()
         );
         $pessoa = new Pessoa();
         $status = new Status_Pedido();
         $pedido = new Pedido();
         $pp = new Pizza_Pedido;
+        $pizza = new Pizza();
         
         if (isset($_POST['id_pessoa']) && !empty($_POST['id_pessoa'])) {
             $pedido->setId_pessoa($_POST['id_pessoa']);
@@ -71,18 +73,36 @@ class pedidoController extends controller {
             $dados['info'] = "Pedido editado com sucesso!";
         }
         
-        if (isset($_POST['id_pizza']) && !empty($_POST['id_pizza'])) {
+        //Novo pizza_pedido
+        if (isset($_POST['id_pizza_add']) && !empty($_POST['id_pizza_add'])) {
             $pp->setId_pedido($id_pedido);
-            $pp->setId_pizza($_POST['id_pizza']);
-            $pp->setQuantidade($_POST['quantidade']);
-            $pp->setId_massa($_POST['id_massa']);
+            $pp->setId_pizza($_POST['id_pizza_add']);
+            $pp->setQuantidade($_POST['quantidade_add']);
             $pp->add();
+            
+            $valor = $pp->getValorTotalPedido($id_pedido);
+            $pedido->atualizaValor($id_pedido, $valor);
+            
+            
         }
+        
+        //Editar pizza_pedido
+        if (isset($_POST['quantidade_edit']) && !empty($_POST['quantidade_edit'])) {
+            $pp->setId_pedido($id_pedido);
+            $pp->setId_pizza($_POST['id_pizza_edit']);
+            $pp->setQuantidade($_POST['quantidade_edit']);
+            $pp->update();
+            
+            $valor = $pp->getValorTotalPedido($id_pedido);
+            $pedido->atualizaValor($id_pedido, $valor);
+        }
+        
         
         $dados['pessoas'] = $pessoa->getPessoas();
         $dados['status_pedido'] = $status->getStatus_pedido();
         $dados['pedido'] = $pedido->getPedido($id_pedido);
         $dados['pizza_pedido'] = $pp->getPizzaPedidoIdPedido($id_pedido);
+        $dados['pizzas'] = $pizza->getPizzas();
         $this->loadTemplate('pedidoEdit',$dados);
     }
     

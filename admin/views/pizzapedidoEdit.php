@@ -10,7 +10,7 @@
                         <i class="fa fa-home"></i>  <a href="<?php echo BASE_URL; ?>">Home</a>
                     </li>
                     <li>
-                        <i class="fa fa-users"></i>  <a href="<?php echo BASE_URL; ?>/pedido/edit/<?php echo $pedido; ?>">Pedido</a>
+                        <i class="fa fa-shopping-cart"></i>  <a href="<?php echo BASE_URL; ?>/pedido/edit/<?php echo $pedido; ?>">Pedido</a>
                     </li>
                     <li class="active">
                         <i class="fa fa-edit"></i>  Editar Pizza

@@ -2,7 +2,7 @@
 
 class Pizza extends model {
     
-    private $id_pizza;
+    private $id_pizza, $id_massa;
     private $nome, $imagem;
     private $preco_custo, $preco_venda;
     private $ingredientes;
@@ -14,12 +14,14 @@ class Pizza extends model {
                 . "ingredientes = :ingredientes, "
                 . "preco_custo = :preco_custo, "
                 . "preco_venda = :preco_venda, "
-                . "imagem = :imagem");
+                . "imagem = :imagem, "
+                . "id_massa = :id_massa");
         $sql->bindValue(":nome", $this->getNome());
         $sql->bindValue(":ingredientes", $this->getIngredientes());
         $sql->bindValue(":preco_custo", $this->getPreco_custo());
         $sql->bindValue(":preco_venda", $this->getPreco_venda());
         $sql->bindValue(":imagem", $this->getImagem());
+        $sql->bindValue(":id_massa", $this->getId_massa());
         $sql->execute();
     }
     
@@ -28,9 +30,10 @@ class Pizza extends model {
                     . "nome = :nome, "
                     . "ingredientes = :ingredientes, "
                     . "preco_custo = :preco_custo, "
-                    . "preco_venda = :preco_venda, ";
+                    . "preco_venda = :preco_venda, "
+                    . "id_massa = :id_massa ";
         if (!empty($this->getImagem())) {
-            $comando .= "imagem = :imagem ";
+            $comando .= ", imagem = :imagem ";
         }
         $comando .= "WHERE "
                     . "id_pizza = :id_pizza";        
@@ -39,6 +42,7 @@ class Pizza extends model {
         $sql->bindValue(":ingredientes", $this->getIngredientes());
         $sql->bindValue(":preco_custo", $this->getPreco_custo());
         $sql->bindValue(":preco_venda", $this->getPreco_venda());
+        $sql->bindValue(":id_massa", $this->getId_massa());
         if (!empty($this->getImagem())) {
             $sql->bindValue(":imagem", $this->getImagem());
         }        
@@ -53,7 +57,14 @@ class Pizza extends model {
     }
 
     public function getPizzas() {
-        $sql = $this->db->prepare("SELECT * FROM pizza");
+        $sql = $this->db->prepare("SELECT "
+                    . "pizza.*, "
+                    . "massa.nome AS massa "
+                . "FROM "
+                    . "pizza "
+                . "LEFT JOIN "
+                    . "massa USING (id_massa) "
+                . "ORDER BY pizza.nome");
         $sql->execute();
         
         $array = array();
@@ -74,6 +85,18 @@ class Pizza extends model {
         }
         return $array;
     }
+    
+    public function getPizzaMassa($id_massa) {
+        $sql = $this->db->prepare("SELECT * FROM pizza WHERE id_massa = :id_massa");
+        $sql->bindValue(":id_massa", $id_massa);
+        $sql->execute();
+        
+        $array = array();
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+        return $array;
+    }
 
 
     /*
@@ -81,6 +104,10 @@ class Pizza extends model {
      */
     function getId_pizza() {
         return $this->id_pizza;
+    }
+
+    function getId_massa() {
+        return $this->id_massa;
     }
 
     function getNome() {
@@ -107,6 +134,10 @@ class Pizza extends model {
         $this->id_pizza = $id_pizza;
     }
 
+    function setId_massa($id_massa) {
+        $this->id_massa = $id_massa;
+    }
+
     function setNome($nome) {
         $this->nome = $nome;
     }
@@ -127,5 +158,5 @@ class Pizza extends model {
         $this->ingredientes = $ingredientes;
     }
 
-
+        
 }

@@ -30,6 +30,7 @@
                                 <tr>
                                     <th>Imagem</th>
                                     <th>Pizza</th>
+                                    <th>Massa</th>
                                     <th>Preço Custo</th>
                                     <th>Preço Venda</th>
                                     <th>Ação</th>
@@ -40,6 +41,7 @@
                                 <tr>
                                     <td><img src="<?php echo BASE_URL; ?>/assets/images/pizzas/<?php echo $pizza['imagem']; ?>" width="60"></td>
                                     <td><?php echo $pizza['nome']; ?></td>
+                                    <td><?php echo $pizza['massa']; ?></td>
                                     <td><?php echo "R$ ".number_format($pizza['preco_custo'],2,',','.'); ?></td>
                                     <td><?php echo "R$ ".number_format($pizza['preco_venda'],2,',','.'); ?></td>
                                     <td>

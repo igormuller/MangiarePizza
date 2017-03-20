@@ -2,7 +2,7 @@
 
 class Pizza_Pedido extends model {
     
-    private $id_pizza, $id_pedido, $quantidade, $id_massa;
+    private $id_pizza, $id_pedido, $quantidade, $valor;
     
     
     public function add() {
@@ -11,53 +11,60 @@ class Pizza_Pedido extends model {
                     . "id_pizza = :id_pizza, "
                     . "id_pedido = :id_pedido, "
                     . "quantidade = :quantidade, "
-                    . "id_massa = :id_massa");
+                    . "valor = (select preco_venda from pizza where id_pizza = :id_pizza) * :quantidade");
         $sql->bindValue(":id_pizza", $this->getId_pizza());
         $sql->bindValue(":id_pedido", $this->getId_pedido());
         $sql->bindValue(":quantidade", $this->getQuantidade());
-        $sql->bindValue(":id_massa", $this->getId_massa());
         $sql->execute();
+    }
+    
+    public function getValorTotalPedido($id_pedido) {
+        $sql = $this->db->prepare("SELECT SUM(valor) AS valor_total FROM pizza_pedido WHERE id_pedido = :id_pedido");
+        $sql->bindValue(":id_pedido", $id_pedido);
+        $sql->execute();
+        
+        $valor = 0;
+        if ($sql->rowCount() > 0) {
+            $valor = $sql->fetch()['valor_total'];
+        }
+        return $valor;
+        
     }
     
     public function update() {
         $sql = $this->db->prepare(""
                 . "UPDATE pizza_pedido SET "
-                    . "quantidade = :quantidade "
+                    . "quantidade = :quantidade, "
+                    . "valor = (select preco_venda from pizza where id_pizza = :id_pizza) * :quantidade "
                 . "WHERE "
                     . "id_pedido = :id_pedido AND "
-                    . "id_pizza = :id_pizza AND "
-                    . "id_massa = :id_massa");
+                    . "id_pizza = :id_pizza ");
         $sql->bindValue(":id_pedido", $this->getId_pedido());
         $sql->bindValue(":id_pizza", $this->getId_pizza());
-        $sql->bindValue(":id_massa", $this->getId_massa());
         $sql->bindValue(":quantidade", $this->getQuantidade());
         $sql->execute();
     }
     
-    public function remove($id_pedido, $id_pizza, $id_massa) {
+    public function remove($id_pedido, $id_pizza) {
         $sql = $this->db->prepare("DELETE FROM pizza_pedido "
                 . "WHERE "
                     . "id_pedido = :id_pedido AND "
-                    . "id_pizza = :id_pizza AND "
-                    . "id_massa = :id_massa");
+                    . "id_pizza = :id_pizza");
         $sql->bindValue(":id_pedido", $id_pedido);
         $sql->bindValue(":id_pizza", $id_pizza);
-        $sql->bindValue(":id_massa", $id_massa);
         $sql->execute();
     }
     
-    public function getPizzaPedidoIdPedidoIdPizzaIdMassa($id_pedido, $id_pizza, $id_massa) {
+    public function getPizzaPedidoIdPedidoIdPizza($id_pedido, $id_pizza) {
         $sql = $this->db->prepare("SELECT "
                     . "* "
                 . "FROM "
                     . "pizza_pedido "
                 . "WHERE "
                     . "id_pedido = :id_pedido AND "
-                    . "id_pizza = :id_pedido AND "
-                    . "id_massa = :id_massa");
+                    . "id_pizza = :id_pizza");
         $sql->bindValue(":id_pedido", $id_pedido);
         $sql->bindValue(":id_pizza", $id_pizza);
-        $sql->bindValue(":id_massa", $id_massa);
         $sql->execute();
         
         $array = array();
@@ -106,8 +113,8 @@ class Pizza_Pedido extends model {
         return $this->quantidade;
     }
 
-    function getId_massa() {
-        return $this->id_massa;
+    function getValor() {
+        return $this->valor;
     }
 
     function setId_pizza($id_pizza) {
@@ -122,8 +129,8 @@ class Pizza_Pedido extends model {
         $this->quantidade = $quantidade;
     }
 
-    function setId_massa($id_massa) {
-        $this->id_massa = $id_massa;
+    function setValor($valor) {
+        $this->valor = $valor;
     }
 
 

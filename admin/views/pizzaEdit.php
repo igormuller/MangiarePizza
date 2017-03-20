@@ -54,6 +54,16 @@
                                             <input type="text" class="form-control" name="preco_venda" value="<?php echo number_format($pizza['preco_venda'],2,',','.'); ?>" required=""/>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <label>Massa:</label>
+                                        <select class="form-control" name="id_massa">
+                                            <?php foreach ($massas as $massa): ?> 
+                                            <option value="<?php echo $massa['id_massa']; ?>" <?php echo ($pizza['id_massa'] === $massa['id_massa'])? "selected":""; ?>>
+                                                <?php echo $massa['nome']; ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">

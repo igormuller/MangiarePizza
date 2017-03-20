@@ -20,7 +20,10 @@ class pizzaController extends controller {
     }
     
     public function add() {
-        $dados = array();
+        $dados = array(
+            'massas' => array()
+        );
+        $massa = new Massa();
         
         if (isset($_POST['nome']) && !empty($_POST['nome'])) {
             $pizza = new Pizza();
@@ -28,6 +31,7 @@ class pizzaController extends controller {
             $pizza->setPreco_custo(str_replace(',','.',addslashes($_POST['preco_custo'])));
             $pizza->setPreco_venda(str_replace(',','.',addslashes($_POST['preco_venda'])));
             $pizza->setIngredientes(addslashes($_POST['ingredientes']));
+            $pizza->setId_massa($_POST['id_massa']);
             
             if (isset($_FILES['imagem']) && !empty($_FILES['imagem']['tmp_name'])) {
                
@@ -46,18 +50,22 @@ class pizzaController extends controller {
             $pizza->add();
             header("Location: ".BASE_URL."/pizza");
         }
+        
+        $dados['massas'] = $massa->getMassas();
         $this->loadTemplate('pizzaAdd', $dados);
     }
     
     public function edit($id_pizza) {
         $dados = array(
             'info' => '',
-            'pizza' => array()
+            'pizza' => array(),
+            'massas' => array()
         );
         
         //Verifica se foi setado a informação $id_pizza na URL.
         if (isset($id_pizza) && !empty($id_pizza)) {
             $pizza = new Pizza();
+            $massa = new Massa();
             $array = $pizza->getPizza($id_pizza);
             
             //Verifica se foi setado o nome no formulário
@@ -67,6 +75,7 @@ class pizzaController extends controller {
                 $pizza->setPreco_custo(str_replace(',','.',addslashes($_POST['preco_custo'])));
                 $pizza->setPreco_venda(str_replace(',','.',addslashes($_POST['preco_venda'])));
                 $pizza->setIngredientes(addslashes($_POST['ingredientes']));
+                $pizza->setId_massa($_POST['id_massa']);
                 
                 //verifica se foi informado imagem no formulário
                 if (isset($_FILES['imagem']) && !empty($_FILES['imagem']['tmp_name'])) {
@@ -91,7 +100,7 @@ class pizzaController extends controller {
                 $pizza->update();
                 $dados['info'] = "Pizza editada com sucesso!";
             }
-                      
+            $dados['massas'] = $massa->getMassas();
             $dados['pizza'] = $pizza->getPizza($id_pizza);
         }
         
