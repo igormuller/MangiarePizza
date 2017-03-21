@@ -1,3 +1,4 @@
+<?php $array = explode('/', $_SERVER['REQUEST_URI']); $url = array_slice($array, 3); ?>
 <!DOCTYPE html>
 <html lang="pr-br">
     <head>
@@ -53,16 +54,16 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li>
+                        <li class="<?php echo (in_array("",$url))? "active":""; ?>">
                             <a href="<?php echo BASE_URL; ?>"><i class="fa fa-fw fa-home"></i> Home</a>
                         </li>
-                        <li>
+                        <li class="<?php echo (in_array("pizza",$url))? "active":""; ?>">
                             <a href="<?php echo BASE_URL; ?>/pizza"><i class="fa fa-fw fa-cubes"></i> Pizzas</a>
                         </li>
-                        <li>
+                        <li class="<?php echo (in_array("pedido",$url))? "active":""; ?>">
                             <a href="<?php echo BASE_URL; ?>/pedido"><i class="fa fa-fw fa-shopping-cart"></i> Pedidos</a>
                         </li>
-                        <li>
+                        <li class="<?php echo (in_array("pessoa",$url))? "active":""; ?>">
                             <a href="<?php echo BASE_URL; ?>/pessoa"><i class="fa fa-fw fa-users"></i> Pessoas</a>
                         </li>
                     </ul>

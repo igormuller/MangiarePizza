@@ -6,21 +6,21 @@ global $config;
 $config = array();
 
 if (ENVIRONMENT == "development") {
-	$config['dbname'] = 'mangiarepizza';
+	$config['dbname'] = 'blog';
 	$config['host'] = 'localhost';
         $config['charset'] = 'utf8';
 	$config['dbuser'] = 'root';
 	$config['dbpass'] = '';
         
-        define("BASE_URL","http://localhost/mangiarepizza");
+        define("BASE_URL","http://localhost/mangiarepizza/painel");
 } else {
-	$config['dbname'] = '';
+	$config['dbname'] = 'galeria';
 	$config['host'] = 'localhost';
         $config['charset'] = 'utf8';
-	$config['dbuser'] = '';
+	$config['dbuser'] = 'root';
 	$config['dbpass'] = '';
         
-        define("BASE_URL","http://www.mangiarepizza.com.br");
+        define("BASE_URL","http://www.mangiarepizza.com.br/painel");
 }
 
 ?>

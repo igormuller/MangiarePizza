@@ -5,8 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/bootstrap.min.css">
-        <script src="<?php echo BASE_URL; ?>/asstes/js/jquery-3.1.1.min.js"></script>
-        <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js"></script>
+        
         <style>
             /* Remove the navbar's default rounded borders and increase the bottom margin */ 
             .navbar {
@@ -47,15 +46,13 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Deals</a></li>
-                        <li><a href="#">Stores</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li class="active"><a href="<?php echo BASE_URL; ?>">Home</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>/pizza">Pizzas</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>/contato">Contato</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>/painel/user"><span class="glyphicon glyphicon-user"></span> Conta</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>/carrinho"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -67,5 +64,10 @@
             <p>Mangiare Pizza Copyright</p>  
             Desenvolvido por <a href="http://www.idmweb.com.br" target="_blank">IDMWeb - Soluções</a>
         </footer>
+                
+        <!-- jQuery -->
+        <script src="<?php echo BASE_URL; ?>/assets/js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js"></script>
     </body>
 </html>
