@@ -9,7 +9,7 @@
         
         <style>
             /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-            .row.content {height: 1500px}
+            .row.content {height: 100%}
 
             /* Set gray background color and 100% height */
             .sidenav {
@@ -38,14 +38,14 @@
         <div class="container-fluid">
             <div class="row content">
                 <div class="col-sm-3 sidenav">
-                    <h4>Nome do cliente logado</h4>
+                    <h4><a href="<?php echo BASE_URL; ?>/user/">Nome do cliente logado</a></h4>
                     <ul class="nav nav-pills nav-stacked">
                         <li class="<?php echo ($url[0]==="/")? "active":""; ?>"><a href="<?php echo BASE_URL; ?>"><i class="glyphicon glyphicon-home"></i>    Home</a></li>
-                        <li class="<?php echo ($url[0]==="/pedido")? "active":""; ?>"><a href="<?php echo BASE_URL; ?>/pedido">Pedidos</a></li>
+                        <li class="<?php echo ($url[0]==="/pedido")? "active":""; ?>"><a href="<?php echo BASE_URL; ?>/pedido"><i class="glyphicon glyphicon-inbox"></i> Pedidos</a></li>
                     </ul>
                     <br>
                 </div>
-
+                <br/>
                 <?php $this->loadViewInTemplate($viewName, $viewData); ?>
                 
             </div>

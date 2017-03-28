@@ -1,3 +1,4 @@
+<?php $url = explode('mangiarepizza', $_SERVER['REQUEST_URI']); array_shift($url); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -46,13 +47,13 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo BASE_URL; ?>">Home</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>/pizza">Pizzas</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>/contato">Contato</a></li>
+                        <li class="<?php echo ($url[0] === "/")? "active":""; ?>"><a href="<?php echo BASE_URL; ?>">Home</a></li>
+                        <li class="<?php echo ($url[0] === "/pizza")? "active":""; ?>"><a href="<?php echo BASE_URL; ?>/pizza">Pizzas</a></li>
+                        <li class="<?php echo ($url[0] === "/contato")? "active":""; ?>"><a href="<?php echo BASE_URL; ?>/contato">Contato</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="<?php echo BASE_URL; ?>/painel/user"><span class="glyphicon glyphicon-user"></span> Conta</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>/carrinho"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                        <li class="<?php echo ($url[0] === "/carrinho")? "active":""; ?>"><a href="<?php echo BASE_URL; ?>/carrinho"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
                     </ul>
                 </div>
             </div>

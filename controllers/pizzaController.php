@@ -6,7 +6,11 @@ class pizzaController extends controller {
     }
     
     public function index() {
-        $dados = array();
+        $dados = array(
+            "pizzas" => array()
+        );
+        $pizza = new Pizza();
+        $dados['pizzas'] = $pizza->getPizzas();
         $this->loadTemplate('pizza', $dados);
     }
     
