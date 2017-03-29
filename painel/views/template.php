@@ -1,4 +1,4 @@
-<?php $url = explode('painel', $_SERVER['REQUEST_URI']); array_shift($url); ?>
+<?php $array = explode('/', $_SERVER['REQUEST_URI']); $url = array_slice($array, 3); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -6,6 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/font-awesome.min.css">
         
         <style>
             /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
@@ -38,10 +39,11 @@
         <div class="container-fluid">
             <div class="row content">
                 <div class="col-sm-3 sidenav">
-                    <h4><a href="<?php echo BASE_URL; ?>/user/">Nome do cliente logado</a></h4>
+                    <h4><a href="<?php echo BASE_URL; ?>/user"><?php echo $_SESSION['nomePLogado']; ?></a></h4>
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="<?php echo ($url[0]==="/")? "active":""; ?>"><a href="<?php echo BASE_URL; ?>"><i class="glyphicon glyphicon-home"></i>    Home</a></li>
-                        <li class="<?php echo ($url[0]==="/pedido")? "active":""; ?>"><a href="<?php echo BASE_URL; ?>/pedido"><i class="glyphicon glyphicon-inbox"></i> Pedidos</a></li>
+                        <li class="<?php echo (in_array("",$url))? "active":""; ?>"><a href="<?php echo BASE_URL; ?>"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+                        <li class="<?php echo (in_array("pedido",$url))? "active":""; ?>"><a href="<?php echo BASE_URL; ?>/pedido"><i class="glyphicon glyphicon-inbox"></i> Pedidos</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>/login/logOut"><i class="glyphicon glyphicon-log-out"></i> LogOut</a></li>
                     </ul>
                     <br>
                 </div>
@@ -50,9 +52,14 @@
                 
             </div>
         </div>
-
+        
         <footer class="container-fluid">
-            <p>Footer Text</p>
+            <div class="row">
+                <div class="col-md-12 text text-center">
+                    Voltar para <a href="../">Mangiare Pizza</a>
+                </div>
+            </div>
+            
         </footer>
         
         <script src="<?php echo BASE_URL; ?>/assets/js/jquery.js"></script>
