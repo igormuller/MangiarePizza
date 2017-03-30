@@ -82,6 +82,7 @@
                                             <th>Pizza</th>
                                             <th>Massa</th>
                                             <th>Qtde</th>
+                                            <th>Valor Un.</th>
                                             <th>Valor</th>
                                             <th>Ações</th>
                                         </tr>
@@ -92,6 +93,7 @@
                                             <td><?php echo $pp['pizza']; ?></td>
                                             <td><?php echo $pp['massa']; ?></td>
                                             <td><?php echo $pp['quantidade']; ?></td>
+                                            <td><?php echo "R$".number_format($pp['preco_venda'],2,',','.'); ?></td>
                                             <td><?php echo "R$".number_format($pp['valor'],2,',','.'); ?></td>
                                             <td>
                                                 <a href="#modal_pizza_pedido_edit" class="btn btn-sm btn-success" data-toggle="modal" data-id_pizza="<?php echo $pp['id_pizza']; ?>" data-pizza="<?php echo $pp['pizza']; ?>" data-qtde="<?php echo $pp['quantidade']; ?>"><i class="glyphicon glyphicon-pencil"></i></a>

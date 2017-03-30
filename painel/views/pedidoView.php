@@ -22,6 +22,7 @@
                 <th>Sabor</th>
                 <th>Massa</th>
                 <th>Qtde</th>
+                <th>Preço Un.</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
                 <td><?php echo $pizza['pizza']; ?></td>
                 <td><?php echo $pizza['massa']; ?></td>
                 <td><?php echo $pizza['quantidade']; ?></td>
+                <td><?php echo "R$ ".number_format($pizza['preco_venda'],2,',','.'); ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

@@ -79,6 +79,7 @@ class Pizza_Pedido extends model {
                 . "SELECT "
                     . "pp.*, "
                     . "pizza.nome AS pizza, "
+                    . "pizza.preco_venda AS preco_venda, "
                     . "massa.nome AS massa "
                 . "FROM "
                     . "pizza_pedido pp "

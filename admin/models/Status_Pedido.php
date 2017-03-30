@@ -12,4 +12,12 @@ class Status_Pedido extends model {
         }
         return $array;
     }
+    
+    public function criarStatusPedido($status) {
+        foreach ($status as $sp) {
+            $sql = $this->db->prepare("INSERT INTO status_pedido SET nome = :nome");
+            $sql->bindValue(":nome", $sp);
+            $sql->execute();
+        }
+    }
 }

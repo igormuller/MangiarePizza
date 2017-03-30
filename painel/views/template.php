@@ -39,7 +39,7 @@
         <div class="container-fluid">
             <div class="row content">
                 <div class="col-sm-3 sidenav">
-                    <h4><a href="<?php echo BASE_URL; ?>/user"><?php echo $_SESSION['nomePLogado']; ?></a></h4>
+                    <h4><a href="<?php echo BASE_URL; ?>/user/edit/<?php echo $_SESSION['pLogado']; ?>"><?php echo $_SESSION['nomePLogado']; ?></a></h4>
                     <ul class="nav nav-pills nav-stacked">
                         <li class="<?php echo (in_array("",$url))? "active":""; ?>"><a href="<?php echo BASE_URL; ?>"><i class="glyphicon glyphicon-home"></i> Home</a></li>
                         <li class="<?php echo (in_array("pedido",$url))? "active":""; ?>"><a href="<?php echo BASE_URL; ?>/pedido"><i class="glyphicon glyphicon-inbox"></i> Pedidos</a></li>

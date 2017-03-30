@@ -120,5 +120,12 @@ class pedidoController extends controller {
         header("Location: ".BASE_URL."/pedido");
     }
     
+    public function criarStatusPedido() {
+        $status_pedido = array('Novo', 'Produção', 'Em entrega', 'Entregue', 'Aguardando Pagamento', 'Concluído');
+        $s = new Status_Pedido();
+        $s->criarStatusPedido($status_pedido);
+        echo "criado com sucesso";
+    }
+    
 }
 ?>
