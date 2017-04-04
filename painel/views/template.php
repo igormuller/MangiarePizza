@@ -64,5 +64,7 @@
         
         <script src="<?php echo BASE_URL; ?>/assets/js/jquery.js"></script>
         <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/jquery.mask.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/script.js"></script>
     </body>
 </html>
