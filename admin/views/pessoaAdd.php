@@ -30,9 +30,13 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-2">
+                                        <label>CEP:</label>
+                                        <input type="text" class="form-control cep" name="cep" id="cep" />
+                                    </div>
+                                    <div class="col-md-6">
                                         <label>Endereco:</label>
-                                        <input type="text" class="form-control" name="endereco" required="" />
+                                        <input type="text" class="form-control" name="endereco" id="endereco" required="" />
                                     </div>
                                     <div class="col-md-2">
                                         <label>Número:</label>
@@ -46,13 +50,17 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label>Bairro:</label>
-                                        <input type="text" class="form-control" name="bairro" required="" />
+                                        <input type="text" class="form-control" name="bairro" id="bairro" required="" />
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label>Cidade:</label>
-                                        <input type="text" class="form-control" name="cidade" required="" />
+                                        <input type="text" class="form-control" name="cidade" id="cidade" required="" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Estado:</label>
+                                        <input type="text" class="form-control" name="estado" id="uf" required="" />
                                     </div>
                                 </div>
                             </div>

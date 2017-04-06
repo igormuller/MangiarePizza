@@ -30,7 +30,7 @@ class userController extends controller {
                         $pessoa->setNome(addslashes($_POST['nome']));
                         $endereco = addslashes($_POST['endereco']).",".addslashes($_POST['numero']);
                         $endereco .= ",".addslashes($_POST['complemento']);
-                        $endereco .= ",".addslashes($_POST['bairro']).",".addslashes($_POST['cidade']);
+                        $endereco .= ",".addslashes($_POST['bairro']).",".addslashes($_POST['cidade']).",".addslashes($_POST['estado']).",".addslashes($_POST['cep']);
                         $pessoa->setEndereco($endereco);
                         $pessoa->setTelefone(addslashes($_POST['telefone']));
                         $pessoa->setEmail(addslashes($_POST['email']));

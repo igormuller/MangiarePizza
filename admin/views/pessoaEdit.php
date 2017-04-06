@@ -40,9 +40,13 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-2">
+                                        <label>CEP:</label>
+                                        <input type="text" class="form-control cep" name="cep" id="cep" value="<?php echo $endereco[6]; ?>" />
+                                    </div>
+                                    <div class="col-md-6">
                                         <label>Endereco:</label>
-                                        <input type="text" class="form-control" name="endereco" value="<?php echo $endereco[0]; ?>" required="" />
+                                        <input type="text" class="form-control" name="endereco" id="endereco" value="<?php echo $endereco[0]; ?>" required="" />
                                     </div>
                                     <div class="col-md-2">
                                         <label>Número:</label>
@@ -56,13 +60,17 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label>Bairro:</label>
-                                        <input type="text" class="form-control" name="bairro" value="<?php echo $endereco[3]; ?>" required="" />
+                                        <input type="text" class="form-control" name="bairro" id="bairro" value="<?php echo $endereco[3]; ?>" required="" />
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label>Cidade:</label>
-                                        <input type="text" class="form-control" name="cidade" value="<?php echo $endereco[4]; ?>" required="" />
+                                        <input type="text" class="form-control" name="cidade" id="cidade" value="<?php echo $endereco[4]; ?>" required="" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Estado:</label>
+                                        <input type="text" class="form-control" name="estado" id="uf" value="<?php echo $endereco[5]; ?>" required="" />
                                     </div>
                                 </div>
                             </div>
