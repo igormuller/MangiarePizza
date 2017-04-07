@@ -1,5 +1,11 @@
 <div class="col-sm-9">
     <div class="row">
+        <div class="col-md-12">
+            <a href="<?php echo BASE_URL; ?>/pedido/add" class="btn btn-success">Novo pedido</a>
+        </div>            
+    </div>
+    <br/>
+    <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-body">
@@ -26,6 +32,10 @@
                                     <td><?php echo $pedido['pessoa']; ?></td>
                                     <td>
                                         <a href="<?php echo BASE_URL; ?>/pedido/view/<?php echo $pedido['id_pedido']; ?>" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                        <?php if ($pedido['id_status_pedido'] === '1') { ?>
+                                        <a href="<?php echo BASE_URL; ?>/pedido/edit/<?php echo $pedido['id_pedido']; ?>" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="<?php echo BASE_URL; ?>/pedido/cancel/<?php echo $pedido['id_pedido']; ?>" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                        <?php } ?>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

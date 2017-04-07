@@ -2,6 +2,36 @@
 
 class Pedido extends model {
     
+    public function add($pessoa, $obs) {
+        $comando = "INSERT INTO pedido SET dt_pedido = NOW(), valor_final = 0, ";
+        if (!empty($obs)) {
+            $comando .= "observacao = :observacao, ";
+        }
+        $comando .= "id_pessoa = :id_pessoa, id_status_pedido = 1";
+
+        $sql = $this->db->prepare($comando);
+        $sql->bindValue(":id_pessoa", $pessoa);
+        if (!empty($obs)) {
+            $sql->bindValue(":observacao", $obs);
+        }
+        $sql->execute();
+        return $this->db->lastInsertId();
+    }
+    
+    public function update($id_pedido, $obs) {
+        $sql = $this->db->prepare("UPDATE pedido SET observacao = :observacao WHERE id_pedido = :id_pedido");
+        $sql->bindValue(":id_pedido", $id_pedido);
+        $sql->bindValue(":observacao", $obs);
+        $sql->execute();
+    }
+    
+    public function atualizaValor($id_pedido, $valor_final) {
+        $sql = $this->db->prepare("UPDATE pedido SET valor_final = :valor_final WHERE id_pedido = :id_pedido");
+        $sql->bindValue(":id_pedido", $id_pedido);
+        $sql->bindValue(":valor_final", $valor_final);
+        $sql->execute();
+    }
+
     public function getPedidoPessoa($id_pessoa) {
         $sql = $this->db->prepare(
                 "SELECT "
@@ -27,14 +57,18 @@ class Pedido extends model {
         return $array;
     }
     
-    public function getPedido($id_pedido) {
+   public function cancel($id_pedido) {
+       $sql = $this->db->prepare("UPDATE pedido SET id_status_pedido = 7 WHERE id_pedido = :id_pedido");
+       $sql->bindValue(":id_pedido", $id_pedido);
+       $sql->execute();
+   }
+
+
+   public function getPedido($id_pedido) {
         $sql = $this->db->prepare(
                 "SELECT "
-                    . "pedido.id_pedido, "
-                    . "pedido.dt_pedido, "
-                    . "pedido.valor_final, "
-                    . "pedido.observacao, "
-                    . "status_pedido.nome AS status "
+                    . "pedido.*, "
+                    . "status_pedido.nome AS status_pedido "
                 . "FROM "
                     . "pedido "
                 . "LEFT JOIN "
@@ -63,6 +97,7 @@ class Pedido extends model {
             $sql->bindValue(":id_pedido", $id_pedido);
             $sql->execute();
             
+            $array['pizzas'] = array();
             if ($sql->rowCount() > 0) {
                 $pizza = $sql->fetchAll();
                 $array['pizzas'] = $pizza;

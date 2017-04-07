@@ -24,6 +24,10 @@ class loginController extends controller {
         $this->loadView('login', $dados);
     }
     
+    public function add() {
+        $this->loadView('loginAdd');
+    }
+    
     public function logOut() {
         unset($_SESSION['pLogado']);
         unset($_SESSION['nomePLogado']);

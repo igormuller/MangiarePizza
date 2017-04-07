@@ -121,7 +121,7 @@ class pedidoController extends controller {
     }
     
     public function criarStatusPedido() {
-        $status_pedido = array('Novo', 'Produção', 'Em entrega', 'Entregue', 'Aguardando Pagamento', 'Concluído');
+        $status_pedido = array('Novo', 'Produção', 'Em entrega', 'Entregue', 'Aguardando Pagamento', 'Concluído', 'Cancelado');
         $s = new Status_Pedido();
         $s->criarStatusPedido($status_pedido);
         echo "criado com sucesso";

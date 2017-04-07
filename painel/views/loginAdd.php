@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>.: Login - Mangiare Pizza :.</title>
+        <title>.: Criar Login - Mangiare Pizza :.</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="<?php echo BASE_URL; ?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -34,19 +34,33 @@
                     </div>
                     <?php endif; ?>
                 </div>                
-                <div class="col-sm-4 col-sm-offset-4">
+                <div class="col-sm-8 col-sm-offset-2">
                     <div class="panel panel-primary">
-                        <div class="panel-heading text-center"><h3>Login</h3></div>
+                        <div class="panel-heading text-center"><h3>Criar Login</h3></div>
                         <div class="panel-body">
                             <form method="POST">
-                                <input type="text" class="form-control" name="email" placeholder="E-mail" required="" /><br/>
-                                <input type="password" class="form-control" name="senha" placeholder="Senha" required="" /><br/>
+                                <div class="form-group">
+                                    <label>Nome:</label>
+                                    <input type="text" class="form-control" name="nome" required />
+                                </div>
+                                <div class="form-group">
+                                    <label>CEP:</label>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="cep" name="cep" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Endereço:</label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control" id="endereco" name="endereco" required />
+                                        </div>
+                                    </div>
+                                </div>
                                 <input type="submit" class="btn btn-primary" value="Acessar" />
                             </form>
-                        </div>
-                        <div class="panel-footer text-center">
-                            <h4><a href="<?php echo BASE_URL; ?>/login/add">Criar usuário</a> - 
-                            <a href="<?php echo BASE_URL; ?>/login/esqueci">Esqueci Senha</a></h4>
                         </div>
                     </div>
                 </div>

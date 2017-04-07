@@ -11,7 +11,7 @@
             <tr>
                 <td><?php echo $pedido['dt_pedido']; ?></td>
                 <td><?php echo "R$ ".number_format($pedido['valor_final'],2,',','.'); ?></td>
-                <td><?php echo $pedido['status']; ?></td>
+                <td><?php echo $pedido['status_pedido']; ?></td>
             </tr>
         </tbody>
     </table>
