@@ -5,6 +5,23 @@ class Pessoa extends model {
     private $id_pessoa;
     private $nome, $endereco, $telefone, $email, $senha;
     
+    public function add() {
+        $sql = $this->db->prepare("INSERT INTO pessoa SET "
+                . "nome = :nome, "
+                . "endereco = :endereco, "
+                . "telefone = :telefone, "
+                . "email = :email, "
+                . "senha = :senha");
+        $sql->bindValue(":nome", $this->getNome());
+        $sql->bindValue(":endereco", $this->getEndereco());
+        $sql->bindValue(":telefone", $this->getTelefone());
+        $sql->bindValue(":email", $this->getEmail());
+        $sql->bindValue(":senha", $this->getSenha());
+        $sql->execute();
+        
+        return $this->db->lastInsertId();
+    }
+    
     public function validaPessoa($email, $senha) {
         $sql = $this->db->prepare("SELECT * FROM pessoa WHERE email = :email AND senha = :senha");
         $sql->bindValue(":email", $email);
@@ -67,6 +84,18 @@ class Pessoa extends model {
     public function isExiste($id_pessoa) {
         $sql = $this->db->prepare("SELECT * FROM pessoa WHERE id_pessoa = :id_pessoa");
         $sql->bindValue(":id_pessoa", $id_pessoa);
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function isExisteEmail($email) {
+        $sql = $this->db->prepare("SELECT * FROM pessoa WHERE email = :email");
+        $sql->bindValue(":email", $email);
         $sql->execute();
         
         if ($sql->rowCount() > 0) {

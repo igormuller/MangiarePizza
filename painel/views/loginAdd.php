@@ -26,7 +26,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-4 col-sm-offset-4">
+                <div class="col-sm-8 col-sm-offset-2">
                     <?php if (!empty($info)): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -46,8 +46,8 @@
                                 <div class="form-group">
                                     <label>CEP:</label>
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <input type="text" class="form-control" id="cep" name="cep" required />
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control cep" id="cep" name="cep" required />
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +59,71 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="submit" class="btn btn-primary" value="Acessar" />
+                                <div class="form-group">
+                                    <label>Número:</label>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control" name="numero" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Complemento:</label>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="complemento" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Bairro:</label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control" id="bairro" name="bairro" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cidade:</label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control" id="cidade" name="cidade" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Estado:</label>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control" id="uf" name="estado" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Telefone:</label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control telefone" name="telefone" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>E-mail:</label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="email" class="form-control" name="email" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Senha:</label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="password" class="form-control" name="senha" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Adicionar" />
                             </form>
                         </div>
                     </div>
@@ -72,6 +136,10 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="<?php echo BASE_URL; ?>/assets/js/bootstrap.min.js"></script>
+        
+        <script src="<?php echo BASE_URL; ?>/assets/js/script.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/jquery.mask.js"></script>
+        <script src="<?php echo BASE_URL; ?>/assets/js/buscacep.js"></script>
 
     </body>
 
