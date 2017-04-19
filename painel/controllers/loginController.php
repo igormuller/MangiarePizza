@@ -51,6 +51,42 @@ class loginController extends controller {
         $this->loadView('loginAdd', $dados);
     }
     
+    public function resgatar() {
+        $dados = array(
+            'info' => ''
+        );
+        
+        if (isset($_POST['email']) && !empty($_POST['email'])) {
+            $pessoa = new Pessoa();
+            if ($pessoa->isExisteEmail($_POST['email'])) {
+                $p = $pessoa->getPessoaEmail($_POST['email']);
+                $senha = md5(time());
+                $pessoa->updateSenha($senha, $p['id_pessoa']);
+                
+                $email = new PHPMailer();
+                $email->SetLanguage("br");
+                $email->IsMail();
+                $email->IsHTML(true);
+                $email->From = $p['email'];
+                $email->FromName = $p['nome'];
+                $email->Subject = 'Resgatar Senha';
+                $email->MsgHTML("Sua nova senha é: ".$senha);
+                
+                if ($email->Send()) {
+                    $dados['info'] = "E-mail enviado com nova senha";
+                } else {
+                    $dados['info'] = "Falha no envio do e-mail (".$email->ErrorInfo.")";
+                }
+                
+            } else {
+                $dados['info'] = "E-mail não existente.";
+            }
+        }
+        
+        $this->loadView('loginResgatar', $dados);
+    }
+
+
     public function logOut() {
         unset($_SESSION['pLogado']);
         unset($_SESSION['nomePLogado']);

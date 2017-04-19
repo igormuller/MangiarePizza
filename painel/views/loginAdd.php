@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>.: Criar Login - Mangiare Pizza :.</title>
+        <title>.: Criar Usuário - Mangiare Pizza :.</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="<?php echo BASE_URL; ?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -36,7 +36,7 @@
                 </div>                
                 <div class="col-sm-8 col-sm-offset-2">
                     <div class="panel panel-primary">
-                        <div class="panel-heading text-center"><h3>Criar Login</h3></div>
+                        <div class="panel-heading text-center"><h3>Criar Usuário</h3></div>
                         <div class="panel-body">
                             <form method="POST">
                                 <div class="form-group">

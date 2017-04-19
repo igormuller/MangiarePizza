@@ -73,7 +73,26 @@ class Pessoa extends model {
         $sql->execute();
     }
     
-    public function isLogged() {
+    public function updateSenha($senha, $id_pessoa) {
+        $sql = $this->db->prepare("UPDATE pessoa SET senha = :senha WHERE id_pessoa = :id_pessoa");
+        $sql->bindValue(":senha", $senha);
+        $sql->bindValue(":id_pessoa", $id_pessoa);
+        $sql->execute();
+    }
+
+    public function getPessoaEmail($email) {
+        $sql = $this->db->prepare("SELECT * FROM pessoa WHERE email = :email");
+        $sql->bindValue(":email", $email);
+        $sql->execute();
+        
+        $array = array();
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetch();
+        }
+        return $array;
+    }
+
+        public function isLogged() {
         if (isset($_SESSION['pLogado']) && !empty($_SESSION['pLogado'])) {
             return TRUE;
         } else {

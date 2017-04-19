@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'config.php';
+require 'class.phpmailer.php';
 spl_autoload_register(function ($class){
 
     if (strpos($class, 'Controller') > -1) {
