@@ -22,7 +22,7 @@
                             <label>Observação:</label>
                             <textarea class="form-control" name="observacao" rows="3"></textarea>
                         </div>
-                        <input type="submit" class="btn btn-success" value="Salvar" />
+                        <input type="submit" class="btn btn-success" value="Escolher Pizzas" />
                     </form>
                 </div>
             </div>

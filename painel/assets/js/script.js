@@ -9,6 +9,8 @@ $(function () {
         }
     };
 
+
+
     $('.telefone').mask(SPMaskBehavior, spOptions);
     $('.cep').mask('00000-000');
     $('.data').mask("00/00/0000");
@@ -26,4 +28,8 @@ $('#modal_pizza_pedido_edit').on('show.bs.modal', function (event){
     modal.find('#pizza_edit').text(pizza);
     modal.find('#id_pizza_edit').val(id_pizza);
     modal.find('#quantidade_edit').val(quantidade);
+});
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
 });

@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-success" value="Salvar" />
+                        <input type="submit" class="btn btn-success" value="Salvar" data-toggle="tooltip" data-placement="top" title="Salvar dados do pedido" />
                     </form>                            
 
                     <hr>
@@ -66,6 +66,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="panel-footer">
+                    <a href="<?php echo BASE_URL; ?>/pedido" class="btn btn-success">Finalizar Pedido</a>
+                </div>
             </div>
         </div>
     </div>
@@ -89,7 +92,7 @@
                         <div class="col-md-9">
                             <select class="form-control" name="id_pizza_add">
                                 <?php foreach ($pizzas as $pizza): ?>
-                                <option value="<?php echo $pizza['id_pizza']; ?>"><?php echo $pizza['nome']." - ".$pizza['massa']; ?></option>
+                                <option value="<?php echo $pizza['id_pizza']; ?>"><?php echo $pizza['nome']." - massa (".$pizza['massa'].")"; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
