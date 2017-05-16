@@ -27,10 +27,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-4 col-sm-offset-4">
+                    <br/>
                     <?php if (!empty($info)): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <strong>Atneção!</strong> <?php echo $info; ?>
+                        <strong>Atenção!</strong> <?php echo $info; ?>
                     </div>
                     <?php endif; ?>
                 </div>                

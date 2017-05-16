@@ -34,7 +34,7 @@
                                         <a href="<?php echo BASE_URL; ?>/pedido/view/<?php echo $pedido['id_pedido']; ?>" class="btn btn-sm btn-default" data-toggle="tooltip" data-placement="top" title="Visualizar"><i class="glyphicon glyphicon-eye-open"></i></a>
                                         <?php if ($pedido['id_status_pedido'] === '1') { ?>
                                         <a href="<?php echo BASE_URL; ?>/pedido/edit/<?php echo $pedido['id_pedido']; ?>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
-                                        <a href="<?php echo BASE_URL; ?>/pedido/cancel/<?php echo $pedido['id_pedido']; ?>" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="glyphicon glyphicon-remove"></i></a>
+                                        <a href="<?php echo BASE_URL; ?>/pedido/cancel/<?php echo $pedido['id_pedido']; ?>" onclick="return confirm('Deseja cancelar o pedido?')" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Cancelar"><i class="glyphicon glyphicon-remove"></i></a>
                                         <?php } ?>
                                     </td>
                                 </tr>
