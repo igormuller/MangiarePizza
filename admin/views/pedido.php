@@ -48,7 +48,7 @@
                                     <td><?php echo $pedido['pessoa']; ?></td>
                                     <td>
                                         <a href="<?php echo BASE_URL; ?>/pedido/edit/<?php echo $pedido['id_pedido']; ?>" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></a>
-                                        <a href="<?php echo BASE_URL; ?>/pedido/remove/<?php echo $pedido['id_pedido']; ?>" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                        <a href="<?php echo BASE_URL; ?>/pedido/remove/<?php echo $pedido['id_pedido']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Remover pedido?')"><i class="glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

@@ -46,7 +46,7 @@
                                     <td><?php echo "R$ ".number_format($pizza['preco_venda'],2,',','.'); ?></td>
                                     <td>
                                         <a href="<?php echo BASE_URL; ?>/pizza/edit/<?php echo $pizza['id_pizza']; ?>" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></a>
-                                        <a href="<?php echo BASE_URL; ?>/pizza/remove/<?php echo $pizza['id_pizza']; ?>" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                        <a href="<?php echo BASE_URL; ?>/pizza/remove/<?php echo $pizza['id_pizza']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Remover pizza?')"><i class="glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

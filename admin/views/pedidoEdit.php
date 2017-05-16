@@ -97,7 +97,7 @@
                                             <td><?php echo "R$".number_format($pp['valor'],2,',','.'); ?></td>
                                             <td>
                                                 <a href="#modal_pizza_pedido_edit" class="btn btn-sm btn-success" data-toggle="modal" data-id_pizza="<?php echo $pp['id_pizza']; ?>" data-pizza="<?php echo $pp['pizza']; ?>" data-qtde="<?php echo $pp['quantidade']; ?>"><i class="glyphicon glyphicon-pencil"></i></a>
-                                                <a href="<?php echo BASE_URL; ?>/pizza_pedido/remove/<?php echo $pedido['id_pedido']."/".$pp['id_pizza']; ?>" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                                <a href="<?php echo BASE_URL; ?>/pizza_pedido/remove/<?php echo $pedido['id_pedido']."/".$pp['id_pizza']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Remover pizza do pedido?')"><i class="glyphicon glyphicon-remove"></i></a>
                                             </td>
                                         </tr>
                                         <?php endforeach;?>
